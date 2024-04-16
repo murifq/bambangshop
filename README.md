@@ -90,6 +90,21 @@ Penggunaan Dashmap pada kasus ini lebih diuntungkan dibandingkan Vec (list). Hal
 3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we used the DashMap external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?
 
 Penggunaan Dashmap tetap diperlukan. Karena dengan menggunakan Dashmap, program yang kita buat lebih aman (karena Dashmap menyediakan implementasi HashMap yang thread-safe). Selain itu, penggunaan Singleton Design Pattern juga tidak menjamin programnya thread-safe pada operasi multithreading. Sehingga, penggunaan DashMap tetap diperlukan.
+
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+"Service" dan "Repository" harus dipisahkan karena kegunaannya yang berbeda. Model bertanggung jawab untuk mengatur hal yang berkaitan dengan data yang ada di database. Repository bertanggung jawab untuk mengelola penyimpanan dan pengambilan data. Sedangkan, Service bertanggung jawab untuk implementasi logika bisnis. Degan pemisahan tersebut, akan memudahkan kita untuk mengelola program kita kedepannya karena kode kita tidak tercampur aduk untuk fungsi yang berbeda. Selain itu, juga memudahkan kita untuk menguji bagian tertentu dari kode (_testing_).
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+Apabila kita hanya menggunakan model tanpa pemisahan, maka kompleksitas dari kode sangat tinggi sekali. Sangat sulit untuk me-maintain kode kita kedepannya. Selain itu, apabila terdapat bug pada kode, akan sangat sulit untuk di-fix karena semua kode campur aduk kegunannya. Selain itu, juga akan sulit melakukan testing untuk bagian tertentu dari kode.
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+Ya, saya pernah menggunakan Postman sebelumnya pada matakuliah PBP. Dengan menggunakan aplikasi ini, saya dapat menguji endpoint dari web yang saya buat, dengan beberapa http method seperti GET, POST, PUT, DELETE, dan lainnya. Berikut adalah beberapa fitur Postman yang mungkin berguna kedepannya:
+* Authentication dan Authorization : Postman dapat mendukung berbagai metode autentikasi seperti JWT, Bearer Token, dan lain-lain.
+* Pengelompokkan : Postman dapat mengelompokkan API Request dalam koleksi dan folder yang berbeda-beda. Sehingga, memudahkan untuk melakukan pengetesan API.
+* Pengujian otomatis : Dengan menggunakan Postman, kita dapat melakukakan pengujian otomatis dan memvalidasi respons dari API kita.
 
 #### Reflection Publisher-3
