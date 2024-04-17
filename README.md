@@ -108,3 +108,15 @@ Ya, saya pernah menggunakan Postman sebelumnya pada matakuliah PBP. Dengan mengg
 * Pengujian otomatis : Dengan menggunakan Postman, kita dapat melakukakan pengujian otomatis dan memvalidasi respons dari API kita.
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+Pada tutorial ini, kita menggunakan Observer pattern dengan variasi Push model. Dengan model ini, setiap ada perubahan, Publisher akan secara aktif mengirimkan pembaruan kepada Subscriber. Hal tersebut dapat dilihat bahwa setiap kali dilakukan create, delete, dan publish pada ProductService, akan memanggil notify method. Notify method akan melakukan update pada Subscriber dari Publishernya.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+* Kelebihan
+Dengan menggunakan Pull, maka Subscriber dapat memilih kapan mereka akan melakukan pembaruan data jika diperlukan. Selain itu, Subscriber juga dapat meminta data yang hanya mereka butuhkan saja.
+* Kekurangan
+Dengan menggunakan pull, apabila Subscriber terlalu sering meminta pembaruan data dapat menyebabkan masalah kinerja pada aplikasi dan membebani sistem. Selain itu, karena pembaruan berdasarkan permintaan Subscriber, maka dapat terjadi inkonsistensi data.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+Apabila kita tidak menggunakan multi-threading, maka dapat menyebabkan bottleneck. Sehingga, dapat meningkatkan waktu untuk pengiriman notifikasi ke Subscriber
